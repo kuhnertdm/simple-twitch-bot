@@ -47,3 +47,59 @@ Simple, no-nonsense, lightweight Twitch chat bot made using [pytwitchapi](https:
   * Authenticate in the browser. The bot will gain the ability to read/post messages in the chat that it is connected to, using the account that is authorized.
   * The bot will start up and post a test message in the chat.
   * To stop the bot, kill the script (Ctrl+C)
+
+## Usage
+
+### Custom Commands
+
+* `!addcom <name> <responseText>` - Creates a new custom command.
+  * Only usable by streamer/moderators.
+  * If the command name is not prefixed with `!`, it will be added automatically.
+  * Example: `!addcom yt This is my YouTube channel: <link>` - Creates a new command so that any user can type `!yt`, and the bot will reply with `This is my YouTube channel: <link>`
+* `!editcom <name> <responseText>` - Changes the response text on a custom command.
+  * Only usable by streamer/moderators.
+  * If the command name is not prefixed with `!`, it will be added automatically.
+  * Example: `!editcom yt This is my NEW YouTube channel: <newlink>` - Creates a new command so that any user can type `!yt`, and the bot will reply with `This is my NEW YouTube channel: <newlink>`
+* `!removecom <name>` - Removes a custom command.
+  * Only usable by streamer/moderators.
+  * If the command name is not prefixed with `!`, it will be added automatically.
+  * Example: `!removecom yt` - Removes the `!yt` command
+
+### Quotes
+
+* `!addquote <quotetext>` - Adds a new quote.
+  * Only usable by streamer/moderators.
+  * The date/current game are appended onto the end of the quote text.
+  * Example: `!addquote Something silly! - @MyFavoriteModerator` - Creates a new quote in the following format: `Something silly! - @MyFavoriteModerator | 06/07/2026 | Super Mario 64`
+* `!removequote <index>` - Removes the quote with the given index.
+  * Only usable by streamer/moderators.
+  * Preserves the indices of all other quotes. For example, if quote 5 is removed, then quote 6 is still quote 6.
+  * Example: `!removequote 4` - Removes the quote with index 4.
+* `!quote` - Replies with a random quote
+  * Usable by anyone.
+  * Example: `!quote` causes the bot to reply with `Quote #3: Something silly! - @MyFavoriteModerator | 06/07/2026 | Super Mario 64`
+* `!quote <index>` - Replies with the quote with the given index
+  * Usable by anyone.
+  * Example: `!quote 3` causes the bot to reply with `Quote #3: Something silly! - @MyFavoriteModerator | 06/07/2026 | Super Mario 64`
+* `!quote <keyword>` - Replies with a random quote containing the given keyword
+  * Usable by anyone
+  * Example: `!quote silly` causes the bot to reply with `Quote #3: Something silly! - @MyFavoriteModerator | 06/07/2026 | Super Mario 64`
+
+### Points
+
+* `!points` - Replies with the number of points the caller has
+  * Usable by anyone.
+  * Example: `!points` causes the bot to reply with `YourUsername has 5 points`
+* `!addpoints <user> <amount>` - Adds the given number of points to the given user
+  * Only usable by the streamer.
+  * If the user is prefixed with `@`, it will be removed automatically.
+  * Example: `!addpoints MyFavoriteChatter 1000` gives 1000 points to MyFavoriteChatter
+* `!redeem <redeemName>` - Redeems the given redeem
+  * Usable by anyone
+  * Example: `!redeem stretch` causes the bot to deduct the configured cost of the "stretch" redeem and reply with `YourUsername has redeemed stretch and now has 5 points!`
+* `!redeems` - Replies with the list of available redeems
+  * Usable by anyone
+  * Example: `!redeems` causes the bot to reply with `lurk (1) | stretch (10) | ama (100)`
+* `!leaderboard` - Replies with the list of the top 10 users by points
+  * Usable by anyone
+  * Example: `!leaderboard` causes the bot to reply with `myfavoritestreamer (12345) | myfavoritemoderator (100) | myfavoritechatter (5)`

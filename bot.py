@@ -121,10 +121,10 @@ class TwitchBot:
         await self.handle_custom_commands(msg)
 
     """
-    Usage: `!addcom <commandName> <resultText>`
-    Example: `!addcom mycommandname Result text!`
+    Usage: `!addcom <commandName> <responseText>`
+    Example: `!addcom mycommandname Response text!`
     Adds a custom command so that any user can type `!mycommandname`, and 
-    the bot will reply with "Result text!".
+    the bot will reply with "Response text!".
     """
     async def add_custom_command(self, cmd: ChatCommand):
         if(not config.getboolean('featuresEnabled', 'customCommands')):
@@ -150,9 +150,9 @@ class TwitchBot:
         await cmd.reply(f'Successfully added command: {commandName}')
 
     """
-    Usage: `!editcom <commandName> <newResultText>`
-    Example: `!editcom mycommandname New result text!`
-    Changes the result text on a custom command.
+    Usage: `!editcom <commandName> <newResponseText>`
+    Example: `!editcom mycommandname New response text!`
+    Changes the response text on a custom command.
     """
     async def edit_custom_command(self, cmd: ChatCommand):
         if(not config.getboolean('featuresEnabled', 'customCommands')):
@@ -355,6 +355,8 @@ class TwitchBot:
                 await cmd.reply('Missing number of points')
                 return
             user = cmd.parameter.split(' ')[0].lower()
+            if(user[0]) == '@':
+                user = user[1:] # Remove leading @ symbol
             pointsToAdd = int(cmd.parameter.split(' ')[1])
             if(user not in self.data['points']):
                 await cmd.reply(f'{user} is not in the points list')
