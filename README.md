@@ -16,7 +16,7 @@ Simple, no-nonsense, lightweight Twitch chat bot made using [pytwitchapi](https:
   * Go to [Twitch's app creation page](https://dev.twitch.tv/console/apps/create), logging in with your actual Twitch account (not the dedicated bot account)
   * Fill in the following info:
     * Name: `[Any appropriate name]`
-    * OAuth Redirect URLs: `[http](http://localhost:17563)`
+    * OAuth Redirect URLs: `http://localhost:17563`
     * Category: `Chat Bot`
     * Client Type: `Confidential`
   * Save the Client ID value of the application (sometimes also called the Application ID), create a Client Secret for the application, and save that too
