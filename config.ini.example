@@ -1,0 +1,27 @@
+[auth]
+clientID = <value>
+clientSecret = <value>
+
+[setup]
+targetChannel = <value>
+
+[featuresEnabled]
+customCommands = True
+quotes = True
+points = True
+
+[points]
+activeMinutes = 5
+pointRewards = 25
+
+[redeemCosts]
+hi = 1
+lurk = 1
+lurk-quiet = 1
+stretch = 25
+hydrate = 25
+ama = 250
+
+[redeemCooldowns]
+stretch = 300
+hydrate = 300
