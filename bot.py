@@ -116,7 +116,7 @@ class TwitchBot:
     """
     async def on_message(self, msg: ChatMessage):
         print(f'Message from {msg.user.name}: {msg.text}')
-        if(msg.user.display_name not in self.activeUsers):
+        if(msg.user.display_name.lower() not in self.activeUsers):
             self.activeUsers.append(msg.user.display_name.lower())
         await self.handle_custom_commands(msg)
 
