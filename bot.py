@@ -401,7 +401,7 @@ class TwitchBot:
                 return
             self.data['points'][cmd.user.display_name.lower()] -= cost
             await self.save_data()
-        await cmd.reply(f'{cmd.user.display_name} has redeemed {redeem} and now has {self.data['points'][cmd.user.display_name]} points!')
+        await cmd.reply(f'{cmd.user.display_name} has redeemed {redeem} and now has {self.data['points'][cmd.user.display_name.lower()]} points!')
 
     """
     Usage: `!redeems`
