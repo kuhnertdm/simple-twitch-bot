@@ -295,7 +295,7 @@ class TwitchBot:
             keyword = cmd.parameter
             matchingQuotes = []
             for quote in self.data['quotes']:
-                if(quote != '<removed>' and keyword in quote):
+                if(quote != '<removed>' and keyword.lower() in quote.lower()):
                     matchingQuotes.append(quote)
             if(len(matchingQuotes) == 0):
                 await cmd.reply('No quotes match that keyword!')
