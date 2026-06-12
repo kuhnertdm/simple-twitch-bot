@@ -289,7 +289,7 @@ class TwitchBot:
             if(index < 1 or index > len(self.data['quotes']) or self.data['quotes'][index - 1] == '<removed>'):
                 await cmd.reply('A quote does not exist with that index')
                 return
-            await cmd.reply(f'Quote #{len(self.data['quotes'])}: {self.data['quotes'][index - 1]}')
+            await cmd.reply(f'Quote #{index}: {self.data['quotes'][index - 1]}')
         except ValueError:
             # !quote <keyword> - Get a random quote containing the keyword as a substring
             keyword = cmd.parameter
