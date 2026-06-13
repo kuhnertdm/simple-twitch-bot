@@ -333,7 +333,6 @@ class TwitchBot:
     async def get_points_leaderboard(self, cmd: ChatCommand):
         if(not config.getboolean('featuresEnabled', 'points')):
             return
-        print('got here')
         topTenNames = list(self.data['points'].keys())[0:10]
         message = ""
         for name in topTenNames:
