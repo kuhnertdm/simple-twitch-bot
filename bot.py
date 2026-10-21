@@ -390,7 +390,6 @@ class TwitchBot:
                 if(secondsSinceLastUsage < cooldown):
                     await cmd.reply(f'That redeem is still on cooldown for {cooldown - secondsSinceLastUsage} more seconds')
                     return
-            self.redeemLastUsage[redeem] = int(time())
             cost = config.getint('redeemCosts', redeem)
             currentPoints = 0
             if(cmd.user.display_name.lower() in self.data['points']):
@@ -399,6 +398,7 @@ class TwitchBot:
                 await cmd.reply(f'That redeem costs {cost} points, and you only have {currentPoints}')
                 return
             self.data['points'][cmd.user.display_name.lower()] -= cost
+            self.redeemLastUsage[redeem] = int(time())
             await self.save_data()
         await cmd.reply(f'{cmd.user.display_name} has redeemed {redeem} and now has {self.data['points'][cmd.user.display_name.lower()]} points!')
 
