@@ -223,7 +223,7 @@ class TwitchBot:
         await cmd.reply(f'Added quote #{len(self.data['quotes'])}: {quoteText}')
 
     """
-    Usage: `!addquote <index>`
+    Usage: `!removequote <index>`
     Example: `!removequote 4`
     Sets the quote with the given index (1-indexed) to "<removed>", which causes it to not be 
     selected as a quote with the !quote command. We do this instead of actually removing it 
